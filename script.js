@@ -1,15 +1,17 @@
 //Showing the initial table
-for (let i = 0; i < 16; i++) {
+for (let i = 0; i < 10; i++) {
     let lineDiv = document.createElement('div');
     lineDiv.classList.add('lineDiv');
     document.querySelector('.container').appendChild(lineDiv);
-    for (let i = 0; i < 16; i++) {
+    for (let i = 0; i < 10; i++) {
         let square = document.createElement("div");
         square.setAttribute("class", "square");
         square.textContent = '.';
         lineDiv.appendChild(square);
         square.addEventListener("mouseenter", function () {
-            square.style.backgroundColor = "red";
+            //Random color
+            const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+            square.style.backgroundColor = "#" + randomColor;
         });
     }
 }
@@ -22,11 +24,10 @@ function removeAllChildrenNodes(parent) {
 
 const button = document.querySelector('.btn');
 button.addEventListener('click', function () {
-    const userInput = prompt('Enter a number smaller than 100 :', '16');
+    const userInput = prompt('Enter a number smaller than 100 :', '10');
     const numberInput = +userInput;
     let container = document.querySelector('.container');
     removeAllChildrenNodes(container);
-    console.log(document.querySelector('.container'));
   
     game(numberInput);
 })
@@ -42,7 +43,8 @@ function game(userInput) {
             square.textContent = '.';
             lineDiv.appendChild(square);
             square.addEventListener("mouseenter", function () {
-                square.style.backgroundColor = "red";
+                const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+                square.style.backgroundColor = "#" + randomColor;
             });
         }
     }
