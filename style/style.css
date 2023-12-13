@@ -1,5 +1,6 @@
 .app{
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: space-around;
 }
@@ -11,7 +12,7 @@
     border-radius: 14px;
     padding: 10px;
     border-style: solid;
-    width: 700px;
+    width: 400px;
     height: 700px;
 }
 
@@ -28,6 +29,7 @@
 
 .btn {
     padding: 10px;
+    margin-top: 15px;
     border-style: double;
     border-radius: 20px;
     font-size: large;

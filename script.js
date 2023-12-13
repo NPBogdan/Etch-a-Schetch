@@ -22,7 +22,6 @@ function removeAllChildrenNodes(parent) {
     }
 }
 
-
 const button = document.querySelector('.btn');
 button.addEventListener('click', function () {
     const userInput = prompt('Enter a number smaller than 100 :', '10');
@@ -30,11 +29,11 @@ button.addEventListener('click', function () {
     let container = document.querySelector('.container');
     removeAllChildrenNodes(container);
     //Checking if the user set the size below 100px
-    if (userInput < 100) {
+    if (userInput < 100 && userInput!= undefined) {
         game(numberInput);
     }
     else {
-        alert("Value to low big! Please enter another one.");
+        alert("Insert to correct number! Please enter another one.");
         //Showing the initial table
         for (let i = 0; i < 10; i++) {
             let lineDiv = document.createElement('div');
@@ -55,7 +54,7 @@ button.addEventListener('click', function () {
 })
 
 //Table with the user's input
-function game(userInput) {
+function game(userInput = 10) {
     for (let i = 0; i < userInput; i++) {
         let lineDiv = document.createElement('div');
         lineDiv.classList.add('lineDiv');
