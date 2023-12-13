@@ -6,7 +6,6 @@ for (let i = 0; i < 10; i++) {
     for (let i = 0; i < 10; i++) {
         let square = document.createElement("div");
         square.setAttribute("class", "square");
-        square.textContent = '.';
         lineDiv.appendChild(square);
         square.addEventListener("mouseenter", function () {
             //Random color
@@ -16,11 +15,13 @@ for (let i = 0; i < 10; i++) {
     }
 }
 
+//Delete the container children
 function removeAllChildrenNodes(parent) {
     while (parent.firstChild) {
         parent.removeChild(parent.firstChild);
     }
 }
+
 
 const button = document.querySelector('.btn');
 button.addEventListener('click', function () {
@@ -28,10 +29,32 @@ button.addEventListener('click', function () {
     const numberInput = +userInput;
     let container = document.querySelector('.container');
     removeAllChildrenNodes(container);
-  
-    game(numberInput);
+    //Checking if the user set the size below 100px
+    if (userInput < 100) {
+        game(numberInput);
+    }
+    else {
+        alert("Value to low big! Please enter another one.");
+        //Showing the initial table
+        for (let i = 0; i < 10; i++) {
+            let lineDiv = document.createElement('div');
+            lineDiv.classList.add('lineDiv');
+            document.querySelector('.container').appendChild(lineDiv);
+            for (let i = 0; i < 10; i++) {
+                let square = document.createElement("div");
+                square.setAttribute("class", "square");
+                lineDiv.appendChild(square);
+                square.addEventListener("mouseenter", function () {
+                    //Random color
+                    const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+                    square.style.backgroundColor = "#" + randomColor;
+                });
+            }
+        }
+    }
 })
 
+//Table with the user's input
 function game(userInput) {
     for (let i = 0; i < userInput; i++) {
         let lineDiv = document.createElement('div');
@@ -40,7 +63,7 @@ function game(userInput) {
         for (let i = 0; i < userInput; i++) {
             let square = document.createElement("div");
             square.setAttribute("class", "square");
-            square.textContent = '.';
+            // square.textContent = 'abcdefg'
             lineDiv.appendChild(square);
             square.addEventListener("mouseenter", function () {
                 const randomColor = Math.floor(Math.random() * 16777215).toString(16);
